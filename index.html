@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="main flex flex-col items-center p-8">
+        <h1 class="current-score text-7xl"></h1>
+        <p id="your-score"></p>
+        <p id="enemy-score"></p>
+        <div class="dices flex space-between gap-32">
+            <div class="dice-one flex flex-col items-center">
+                <h1>YOUR DICE</h1>
+                <img src="public/one.png" alt="" id="my-dice" style="height: 100px;">
+            </div>
+            <div class="dice-two flex flex-col items-center">
+                <h1>ENEMY DICE</h1>
+                <img src="public/one.png" alt="" id="enemy-dice" style="height: 100px;">
+            </div>
+        </div>
+
+        <button type="button" onclick="playDices()" class="border border-black rounded-md p-2">PLAY DICES</button>
+        <script src="index.js"></script>
+    </main>
+</body>
+
+</html>
