@@ -12,19 +12,23 @@ function playDices() {
         myScore++;
         roundResult = 'WIN!'
         myScoreboard.text(myScore);
+        $('.current-score').css('color', 'green');
     } else if (opponentPontuation > myPontuation) {
         roundResult = 'LOSE!'
         opponentScore++;
         opponentScoreboard.text(opponentScore);
+        $('.current-score').css('color', 'red');
     } else {
         roundResult = 'DRAW!'
     };
 
+    updateColor(myScore, opponentScore);
+
     $('.current-score').text(roundResult);
     console.log(`Meu: ${myScore}\nOponente: ${opponentScore}`);
 
-    myScore == 10 ? (resetScore(myScoreboard, opponentScoreboard), gameResult.text('GAME FINISHED, YOU WON!')) : '';
-    opponentScore == 10 ? (resetScore(myScoreboard, opponentScoreboard), gameResult.text('GAME FINISHED, YOU LOSE!')) : '';
+    myScore == 10 ? (resetScore(myScoreboard, opponentScoreboard), gameResult.text('Game finished, you won!')) : '';
+    opponentScore == 10 ? (resetScore(myScoreboard, opponentScoreboard), gameResult.text('Game finished, you lose!')) : '';
 }
 
 function rollDices() {
@@ -47,5 +51,36 @@ function resetScore(myScoreboard, opponentScoreboard) {
 
     myScoreboard.text(myScore);
     opponentScoreboard.text(opponentScore);
-    $('.current-score').text('TO PLAY AGAIN, JUST PRESS THE BUTTON!').css('color', 'red');
+    $('.current-score').text('TO PLAY AGAIN, JUST PRESS THE BUTTON!');
+}
+
+function updateColor(sOne, sTwo) {
+    const myScoreboard = $('#my-score');
+    const opponentScoreboard = $('#opponent-score');
+
+    const winnerStyle = {
+        color: 'green',
+        fontWeight: 700
+    };
+
+    const loserStyle = {
+        color: 'red',
+        fontWeight: 400
+    };
+
+    const drawStyle = {
+        color: 'black',
+        fontWeight: 400
+    };
+
+    if (sOne > sTwo) {
+        myScoreboard.css(winnerStyle);
+        opponentScoreboard.css(loserStyle)
+    } else if (sOne < sTwo) {
+        myScoreboard.css(loserStyle);
+        opponentScoreboard.css(winnerStyle)
+    } else {
+        myScoreboard.css(drawStyle);
+        opponentScoreboard.css(drawStyle);
+    }
 }

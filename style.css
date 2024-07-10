@@ -1,0 +1,40 @@
+body{
+    font-family: 'Poppins', sans-serif
+}
+
+#rollDicesBtn{
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.301);
+    font-size: 20px;
+}
+
+#rollDicesBtn:hover{
+    background-color: black;
+    color: white;
+}
+
+.footer{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    flex-direction: column;
+}
+
+hr{
+    border-color: black;
+    border-style: dashed;
+    width: 100%;
+}
+
+.social{
+    margin-top: 20px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
