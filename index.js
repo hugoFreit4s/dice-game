@@ -1,16 +1,30 @@
+let myScore = 0;
+let opponentScore = 0;
+
 function playDices() {
-    const { myScore, opponentScore } = rollDices();
-    let currentScore = '';
-    
-    if (myScore > opponentScore) {
-        currentScore = 'WIN!'
-    } else if (opponentScore > myScore) {
-        currentScore = 'LOSE!'
+    const { myPontuation, opponentPontuation } = rollDices();
+    let roundResult = '';
+    const gameResult = $('.game-result');
+    const myScoreboard = $('#my-score');
+    const opponentScoreboard = $('#opponent-score');
+
+    if (myPontuation > opponentPontuation) {
+        myScore++;
+        roundResult = 'WIN!'
+        myScoreboard.text(myScore);
+    } else if (opponentPontuation > myPontuation) {
+        roundResult = 'LOSE!'
+        opponentScore++;
+        opponentScoreboard.text(opponentScore);
     } else {
-        currentScore = 'DRAW!'
+        roundResult = 'DRAW!'
     };
-    
-    $('.current-score').text(currentScore);
+
+    $('.current-score').text(roundResult);
+    console.log(`Meu: ${myScore}\nOponente: ${opponentScore}`);
+
+    myScore == 10 ? (resetScore(myScoreboard, opponentScoreboard), gameResult.text('GAME FINISHED, YOU WON!')) : '';
+    opponentScore == 10 ? (resetScore(myScoreboard, opponentScoreboard), gameResult.text('GAME FINISHED, YOU LOSE!')) : '';
 }
 
 function rollDices() {
@@ -22,11 +36,16 @@ function rollDices() {
     $('#enemy-dice').attr("src", "public/" + dicesArr[newDiceTwo]);
 
     return values = {
-        myScore: score[0],
-        opponentScore: score[1]
+        myPontuation: score[0],
+        opponentPontuation: score[1]
     };
 }
 
-function resetScore() {
+function resetScore(myScoreboard, opponentScoreboard) {
+    myScore = 0;
+    opponentScore = 0;
 
+    myScoreboard.text(myScore);
+    opponentScoreboard.text(opponentScore);
+    $('.current-score').text('TO PLAY AGAIN, JUST PRESS THE BUTTON!').css('color', 'red');
 }

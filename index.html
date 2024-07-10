@@ -12,9 +12,11 @@
 
 <body>
     <main class="main flex flex-col items-center p-8">
-        <h1 class="current-score text-7xl"></h1>
-        <p id="your-score"></p>
-        <p id="enemy-score"></p>
+        <h1 class="current-score text-7xl">PLAY THE BUTTON TO START</h1>
+        <div class="scoreboard">
+            <p>MY SCORE: <span id="my-score">0</span></p>
+            <p>OPPONENT SCORE: <span id="opponent-score">0</span></p>
+        </div>
         <div class="dices flex space-between gap-32">
             <div class="dice-one flex flex-col items-center">
                 <h1>YOUR DICE</h1>
@@ -25,8 +27,9 @@
                 <img src="public/one.png" alt="" id="enemy-dice" style="height: 100px;">
             </div>
         </div>
-
         <button type="button" onclick="playDices()" class="border border-black rounded-md p-2">PLAY DICES</button>
+        <h1 class="game-result text-7xl"></h1>
+
         <script src="index.js"></script>
     </main>
 </body>
